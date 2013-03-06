@@ -1,0 +1,89 @@
+
+{
+   
+   "startState":"start",
+   "start":{
+       "state_type":"VIEW",
+       "ref":"home",
+       "transitions":{
+           "find":"getName"
+       }
+   },
+   
+     "getName":{
+       "state_type":"VIEW",
+       "ref":"name",
+       "transitions":{
+           "next":"overView"
+       }
+   },
+   
+   "overView":{
+       "state_type":"VIEW",
+       "ref":"flowOverview",
+       "transitions":{
+           "back":"getName",
+           "next":"married"
+       }
+   },
+   
+    "married":{
+       "state_type":"VIEW",
+       "ref":"maritalStatus",
+       "transitions":{
+           "back":"overView",
+           "next":"getAge"
+       }
+   },
+   
+   "getAge":{
+       "state_type":"VIEW",
+       "ref":"age",
+       "transitions":{
+           "back":"married",
+           "next":"getDependents"
+       }
+   },
+   
+    "getDependents":{
+       "state_type":"VIEW",
+       "ref":"dependents",
+       "transitions":{
+           "back":"getAge",
+           "next":"employment"
+       }
+   },
+   
+    "employment":{
+       "state_type":"VIEW",
+       "ref":"employed",
+       "transitions":{
+           "back":"getDependents",
+           "next":"getIncome"
+       }
+   },
+   
+    "getIncome":{
+       "state_type":"VIEW",
+       "ref":"income",
+       "transitions":{
+           "back":"employment",
+           "next":"showResults"
+       }
+   },
+  
+  
+   "showResults":{
+       "state_type":"VIEW",
+       "ref":"results",
+       "transitions":{
+           "back":"getIncome",
+           "next":"end_done"
+       }
+   },
+  
+   "end_done":{
+       "state_type":"endDemo",
+       "outcome":"doneWithDemo"
+   }
+}
