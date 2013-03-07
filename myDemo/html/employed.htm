@@ -13,31 +13,31 @@
        	</script>
     </head>
     <body>
-      <div class="question-unit">
+      <div class="question-unit" align="center">
       	<h3>Are you employed?</h3>
-      	<div class="row">
-            <div class="span4">
+      	<div style="display: block">
+            <div style="display:inline-block">
             	<div class="employed"></div><br/>
             	<input type="radio" id="rbtnemployed"  name="rbtnMarried" value="yes"
             	 data-bind="myModel.Employed" data-bind-options="defaultValue : 'yes'"/>
             	 Yes</div>
-             <div class="span4">
+             <div style="display:inline-block;margin-left: 15px">
              	<div class="unemployed"></div><br/>
             	<input type="radio" id="rbtnunemployed"  name="rbtnMarried" value="no" 
             	data-bind="myModel.Employed"/>No
             	</div>
         </div>
-        <br/><br/>
+        <br/>
         <div>
         	<h3>Do you have Employee Coverage available?</h3>
-	      		<tr>
-	      			<td><input type="radio" id="rbtnCali"  name="rbtnCali" value="yes"
+	      		<div style="display: block">
+            		<div style="display:inline-block">
+            			<input type="radio" id="rbtnCali"  name="rbtnCali" value="yes"
+	            	 		data-bind="myModel.fromCali"/>Yes!</div>
+	            	<div style="display:inline-block;margin-left: 15px">
+	            		<input type="radio" id="rbtnNoCali"  name="rbtnCali" value="no"
 	            	 data-bind="myModel.fromCali"/>
-	            	 Yes!</td>
-	            	 <td><label style="width:170px"></label></td>
-	            	 <td><input type="radio" id="rbtnNoCali"  name="rbtnCali" value="no"
-	            	 data-bind="myModel.fromCali"/>
-	            	 Naah..</td></tr>
+	            	 Naah..</div></div>
         </div>
        <br/>
     	<div class="pull-bottom">
