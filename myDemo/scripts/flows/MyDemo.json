@@ -1,6 +1,9 @@
 
 {
-   
+   "model" : {
+        "name" : "FlowTestModel"
+    },
+    
    "startState":"start",
    "start":{
        "state_type":"VIEW",
@@ -15,8 +18,7 @@
        "state_type":"VIEW",
        "ref":"aboutTheLaw",
        "transitions":{
-           "back": "start"
-           
+           "back": "start"         
        }
    },
    
@@ -24,16 +26,43 @@
        "state_type":"VIEW",
        "ref":"name",
        "transitions":{
-           "next":"overView"
+           "next":"stateFlow"
        }
    },
+   
+   "stateFlow":{
+    "state_type":"ACTION",
+    "exp" : "$[myModel.fromCali] eq 'yes'",
+        "transitions" : {
+            "true" : "overView",
+            "false" : "failPage"
+        }
+   },
+   
+    "failPage" : {
+        "state_type" : "VIEW",
+        "ref" : "Fail",
+        "transitions" : {
+            "back" : "start"
+        }
+    },
    
    "overView":{
        "state_type":"VIEW",
        "ref":"flowOverview",
        "transitions":{
            "back":"getName",
-           "next":"married"
+           "next":"married",
+           "sign_up":"signup"
+       }
+   },
+   
+   "signup":{
+       "state_type":"VIEW",
+              "ref":"signup",
+   "transitions":{
+           "next":"married",
+           "back":"getName"
        }
    },
    
@@ -69,8 +98,17 @@
        "ref":"employed",
        "transitions":{
            "back":"getDependents",
-           "next":"premium"
+           "next":"employeeCoverage"
        }
+   },
+   
+   "employeeCoverage":{
+       "state_type":"ACTION",
+       "exp" : "$[myModel.fromCali] eq 'yes'",
+        "transitions" : {
+            "true" : "premium",
+            "false" : "failPage"
+        }
    },
    
    "premium":{
@@ -104,5 +142,22 @@
    "end_done":{
        "state_type":"endDemo",
        "outcome":"doneWithDemo"
+   },
+   
+      "login":{
+       "state_type":"VIEW",
+       "ref":"login",
+   "transitions":{
+           "next":"forWhom",
+           "back":"name"
+       }
+   },
+   
+      "forgotPwd":{
+       "state_type":"VIEW",
+   "transitions":{
+           "next":"forgotPwd",
+           "back":"name"
+       }
    }
 }
