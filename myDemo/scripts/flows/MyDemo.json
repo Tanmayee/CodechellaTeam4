@@ -81,15 +81,6 @@
        "ref":"maritalStatus",
        "transitions":{
            "back":"overView",
-           "next":"getAge"
-       }
-   },
-   
-   "getAge":{
-       "state_type":"VIEW",
-       "ref":"age",
-       "transitions":{
-           "back":"married",
            "next":"getDependents"
        }
    },
@@ -98,7 +89,7 @@
        "state_type":"VIEW",
        "ref":"dependents",
        "transitions":{
-           "back":"getAge",
+           "back":"married",
            "next":"employment"
        }
    },
