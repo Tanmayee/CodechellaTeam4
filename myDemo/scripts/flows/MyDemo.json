@@ -6,7 +6,17 @@
        "state_type":"VIEW",
        "ref":"home",
        "transitions":{
-           "find":"getName"
+           "find":"getName",
+           "aboutLaw" : "aboutlaw"
+       }
+   },
+   
+     "aboutlaw":{
+       "state_type":"VIEW",
+       "ref":"aboutTheLaw",
+       "transitions":{
+           "back": "start"
+           
        }
    },
    
@@ -59,6 +69,15 @@
        "ref":"employed",
        "transitions":{
            "back":"getDependents",
+           "next":"premium"
+       }
+   },
+   
+   "premium":{
+       "state_type":"VIEW",
+       "ref":"expectedPremium",
+       "transitions":{
+           "back":"employment",
            "next":"getIncome"
        }
    },
@@ -67,7 +86,7 @@
        "state_type":"VIEW",
        "ref":"income",
        "transitions":{
-           "back":"employment",
+           "back":"premium",
            "next":"showResults"
        }
    },
