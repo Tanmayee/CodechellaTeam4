@@ -263,7 +263,7 @@ a:focus {
 }
 
 .row {
-  margin-left: -20px;
+ margin-left: -20px;
   *zoom: 1;
 }
 
@@ -6226,5 +6226,5 @@ a.badge:focus {
 .pull-bottom{
 		position: absolute;
 		bottom : 30px;
-		width: 90%;
+		width: 80%;
 }
