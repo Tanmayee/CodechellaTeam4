@@ -10,9 +10,18 @@
        "ref":"home",
        "transitions":{
            "find":"getName",
-           "aboutLaw" : "aboutlaw"
+           "aboutLaw" : "aboutlaw",
+           "questions":"goToQs"
        }
    },
+   
+   "goToQs":{
+    "state_type":"VIEW",
+       "ref":"questions",
+       "transitions":{
+           "back": "start"         
+       }
+  },
    
      "aboutlaw":{
        "state_type":"VIEW",
@@ -62,7 +71,8 @@
               "ref":"signup",
    "transitions":{
            "next":"married",
-           "back":"getName"
+           "back":"getName",
+           "goToLogin":"goToLogin"
        }
    },
    
@@ -144,20 +154,22 @@
        "outcome":"doneWithDemo"
    },
    
-      "login":{
+      "goToLogin":{
        "state_type":"VIEW",
        "ref":"login",
    "transitions":{
-           "next":"forWhom",
-           "back":"name"
+           "next":"married",
+           "back":"getName",
+           "forgotPwd":"forgotPwd"
        }
    },
    
       "forgotPwd":{
        "state_type":"VIEW",
+       "ref":"login",
    "transitions":{
-           "next":"forgotPwd",
-           "back":"name"
+           "next":"login",
+           "back":"getName"
        }
    }
 }
