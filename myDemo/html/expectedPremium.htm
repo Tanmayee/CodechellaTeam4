@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- Extremely modest title -->
+        <title></title>
+        <script>
+        	var VIEW_SCOPE={
+        		onStart : function(){
+        			Mojo.setDataVal('myModel.expectedPremiumCost', 0);
+        		},
+        		onslidechange: function(){
+        			//alert("myModel.dependents");
+        			var deps = jQuery("#premCost").val();
+        			//alert(deps);
+        			if (deps >= 0)
+        			{
+        				Mojo.setDataVal('myModel.expectedPremiumCost', deps);
+        			}
+        		}
+        	}
+        	
+        </script>
+        
+    </head>
+    <body>
+      <div class="question-unit">
+      	<h3>What is the maximum you are willing <br/> to pay for healthcare per month?</h3>
+      	 <!--<input data-bind="myModel.dependents"  data-validate="numberOnly"/>-->
+
+      	 <div style="text-align: center">
+      	 <input id="premCost" type="range" name="dep" min="0" max="1000" step="10" value="0" 
+      	 onchange="VIEW_SCOPE.onslidechange();">
+      	 <label id="noOfDeps">${myModel.expectedPremiumCost}</label></div>
+       <br/>
+       	<div class="pull-bottom">
+       		<a class="btn pull-left" data-nav="back">Back</a>
+       		<a class="btn pull-right" data-nav="next">Continue</a>
+       </div>
+		</div>
+    </body>
+</html>
