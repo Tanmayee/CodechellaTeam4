@@ -12,23 +12,40 @@
         <link rel="stylesheet" href="css/mojo.css" /> 
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <script>
+        	var images = new Array()
+			images[0] = "./img/masthead-family.jpg";
+			images[1] = "./img/masthead-mom.jpg";
+			images[2] = "./img/masthead-guy.jpg";
+			setTimeout("changeImage()", 5000);
+			var x=0;			
+ 	
+        	function changeImage(){
+        		jQuery('#myGallery').css("background-image", "url('"+ images[x] +"')"); 
+				x++;
+				if(x >= 3){
+        			x = 0;
+    			} 
+    			setTimeout("changeImage()", 5000);
+        	}
+        </script>
+ 
     </head>
     <body>
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+      <div class="hero-unit" id="myGallery">
          <p style="color:white; font-size: 30px">"I have heard a lot about Obamacare <br/>
-        and I am worried about how this is going to <br/> affect the people I care about."</p>
+        and I am worried about how this is <br/>going to affect the people I care about."</p>
       </div>
-
       <!-- Example row of columns -->
-      <div class="row" style="margin-left:100px">
+      <div class="row">
         <div class="span4">
           <h4>One year from now,12 million Americans are expected to begin purchasing 
           	health insurance through newly-created marketplaces known as exchanges.</h4>
           	<p>Federal subsidies will entice many would-be participants to the program
           		 that will offer coverage starting in 2014.</p>        
         </div>
-   		 <div class="span4" style="background-color: #eeeeee;margin-left:150px;">
+   		 <div class="span4 pull-right" style="background-color: #eeeeee">
           <h4 style="margin :10px">How will the Affordable Healthcare Act affect me?</h4>
           <p style="margin :10px">Through some simple questions, we will find out if you qualify for the
           	 government subsidies and what impact it will have on your life.</p>
@@ -36,11 +53,6 @@
           data-nav="find">
           	Find Out Now!</button>
        </div>
-        <!--    <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>-->
       </div>
 
     </body>
