@@ -12,14 +12,31 @@
         <link rel="stylesheet" href="css/mojo.css" /> 
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <script>
+        	var images = new Array()
+			images[0] = "./img/masthead-family.jpg";
+			images[1] = "./img/masthead-mom.jpg";
+			images[2] = "./img/masthead-guy.jpg";
+			setTimeout("changeImage()", 5000);
+			var x=0;			
+ 	
+        	function changeImage(){
+        		jQuery('#myGallery').css("background-image", "url('"+ images[x] +"')"); 
+				x++;
+				if(x >= 3){
+        			x = 0;
+    			} 
+    			setTimeout("changeImage()", 5000);
+        	}
+        </script>
+ 
     </head>
     <body>
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+      <div class="hero-unit" id="myGallery">
          <p style="color:white; font-size: 30px">"I have heard a lot about Obamacare <br/>
-        and I am worried about how this is going to <br/> affect the people I care about."</p>
+        and I am worried about how this is <br/>going to affect the people I care about."</p>
       </div>
-
       <!-- Example row of columns -->
       <div class="row" style="margin-left:100px">
         <div class="span4">
