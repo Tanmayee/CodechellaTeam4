@@ -6174,6 +6174,10 @@ a.badge:focus {
   float: left;
 }
 
+.pull-center{
+  float: none;
+}
+
 .hide {
   display: none;
 }

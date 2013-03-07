@@ -24,10 +24,22 @@
 	       <h4>What is your first name?</h4>
 	       <input data-bind="myModel.name" id="TEST_NAME" />
 	       	<br/>
-	       <div class="pull-bottom">
+	      
+	       <br/>
+	       <div>
+	      	<h3>Are you from California?</h3>
+	      		<tr>
+	      			<td><input type="radio" id="rbtnCali"  name="rbtnCali" value="yes"
+	            	 data-bind="myModel.fromCali"/>
+	            	 Oh Yeah!</td>
+	            	 <td><input type="radio" id="rbtnNoCali"  name="rbtnCali" value="no"
+	            	 data-bind="myModel.fromCali"/>
+	            	 Naah..</td></tr>
+	           	</div>
+	  <div class="pull-bottom">
 	       		<a class="btn pull-right" data-nav="next">Continue</a>
 	       </div>
+		</div>
        </div>
-     
     </body>
 </html>
