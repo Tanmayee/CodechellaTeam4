@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Model Debug Console</title>
+    <style>
+        .modelDbgTxt {
+            color: #f5f5f5;
+        }
+    </style>
+    <script>
+        var MODEL_CONSOLE = {
+            runExpression : function () {
+                try {
+                    var val = $("#EXP").val();
+                    if (!val) return;
+                    val = val.replace(/\\'/g, "'");
+                    var eE = Mojo.getComponent("expressionEvaluator");
+                    var rsp = eE.parseAndEvaluate(val);
+                    alert(rsp);
+                }
+                catch (ex) {
+                    if (ex instanceof MojoException)
+                        alert("Evaluation Exception: Component=" + ex.component + "  Msg=" + ex.msg);
+                    else
+                        alert("UNHANDLED EXCEPTION - let Greg know so he can fix: " + ex.type + " " + ex.message);
+                }
+            },
+
+            loadPage : function () {
+                var val = $("#PGREF").val();
+                if (!val) return;
+                Mojo.loadPage(val);
+            },
+
+            loadFlow : function () {
+                var val = $("#FLOWREF").val();
+                if (!val) return;
+                Mojo.getSome(val);
+            },
+
+            serialize : function () {
+                var val = $("#TOJSON").val();
+                if (!val) return;
+                var m = Mojo.getModel(val);
+                if (m) {
+                    var json = m.serialize();
+                    alert(json);
+                }
+                else {
+                    alert ("Model '"+val+"' does not exist in the system")
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+<span class="modelDbgTxt">Enter Page Reference to load</span><br/>
+<input id="PGREF" style="width:20em"/>
+<span class="debug_console_button" title="Jump to page" onclick="MODEL_CONSOLE.loadPage()">Load Page</span>
+
+<p></p>
+<span class="modelDbgTxt">Enter Flow to load</span><br/>
+<input id="FLOWREF" style="width:20em"/>
+<span class="debug_console_button" title="Jump to page" onclick="MODEL_CONSOLE.loadFlow()">Load Flow</span>
+
+<p></p>
+<span class="modelDbgTxt">Serialize model to JSON</span><br/>
+<input id="TOJSON" style="width:20em"/>
+<span class="debug_console_button" title="Evaluate Expression" onclick="MODEL_CONSOLE.serialize()">Serialize</span>
+
+<p></p>
+<span class="modelDbgTxt">Enter Mojo Expression</span><br/>
+<input id="EXP" style="width:50em"/>
+<span class="debug_console_button" title="Evaluate Expression" onclick="MODEL_CONSOLE.runExpression()">Evaluate</span>
+
+
+</body>
+</html>

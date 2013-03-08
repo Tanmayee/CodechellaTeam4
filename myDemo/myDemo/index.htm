@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <meta charset="UTF-8" name="viewport" content="width= device-width,initial-scale=1.0, maximum-scale=1.0"/>
+        <!-- Extremely modest title -->
+        <title>Affordable HealthCare Act</title>
+        <link rel="stylesheet" href="css/mojo.css" />
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="scripts/mojo-dev.js"></script>
+        
+    <!-- NECESSARY JS FILES -->
+    <!-- <script src="scripts/jquery.js"></script> -->
+    <script src="scripts/mojo.js"></script>
+        <script src="scripts/applicationComponents/LocalStorageDAO.js"></script>
+  <!-- <script src="scripts/config/ResolverConfigs.js"></script> -->
+    <script src="scripts/config/ModelDefConfig.js"></script>
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+        <script>
+    $(document).ready(function(){
+        // All flows are referenced based, so we need to provide some sort of mapping mechanism between the
+// reference and the actual implementation. And where to find the implementations
+ debugger
+var flowResolverConfig = {
+pathToFlows : "scripts/flows", // Or where your flow definitions will reside on your server
+aliasMap : {
+main : "MyDemo.json",
+subflow : "MySubFlow.json",
+"*" : ".json" /* wildcard to indicate that flow refs name maps directly to the names of the flow definition,
+must provide default extension for wildcarded references*/
+}
+};
+
+// All views are referenced based, so we need to provide some sort of mapping mechanism between the
+// reference and the actual implementation. And where to find the implementations
+
+var viewResolverConfig = {
+pathToViews : "html", // Or where your html files will reside on your server
+aliasMap : {
+"Pg1" : "Page1.htm",
+"Pg2" : "Page2.htm",
+"*" : ".htm" /* wildcard to indicate that page refs map directly to the names of the html files,
+must provide default extension for wildcarded references*/
+}
+};
+
+// All action are referenced based, so we need to provide some sort of mapping mechanism between the
+// reference and the actual implementation. And where to find the implementations
+
+var actionExecutorConfig = {
+pathToActions : "scripts/actions", // Or where your javascript action files will reside on your server
+};
+
+var mojoOptions = {
+appId:"MyDemo", // or whatever
+viewPortId:"content",
+ABTestConfig : null,
+                    viewResolverOptions : viewResolverConfig,
+                    flowResolverOptions : flowResolverConfig,
+                    actionOptions : actionExecutorConfig,
+                    modelDefConfig : modelDefinitionConfig,
+                    validationOptions : {
+                        tooltipPosition : 'bottom', // position of tooltip relative to input. supported values: 'top', 'bottom', 'right'
+                        hideOnFocus : false, // hide the tooltip when input field gets focus
+                        showOnlyOne : false, // show only one error tooltip
+                        showMultipleErrorsPerInput : false, // if there is more than one error, show them all
+                        validateOnBack : false, // No validation if the customer hits back
+                        validateOnJump : false, // No validation if the customer jumps in navigation
+                        useValidator : true // use the validation functionality of Mojo
+                    },
+
+                    useFormatter : true, // use the autoformatting functionality of Mojo
+                    defaultDAO : "localStorage",
+                    defaultModelClass : null, // Models will default to this class when constructed if no constructor is specified
+                    enableTraceConsole : false, // Set up the debugging console
+                    enableABTest : false,
+                    showMojoExceptions : true,
+                    testNonExistentOption : true
+}
+
+Mojo.init(mojoOptions);
+Mojo.subscribeForEvent('setViewport', _setViewPort, window);
+Mojo.addDAO("localStorage", new Mojo.model.localStorageDAO());
+//Mojo.addModel(new Mojo.model.dataModel("myModel")) ;
+Mojo.addModels([
+                                    {"modelName" : "myModel", "daoName" : "localStorage", "autoLoad" : true}
+                                ],
+                                _loadData);
+
+
+//Mojo.getSome("main");
+Mojo.applyBindings( 'main_navbar' );
+    });
+    
+          function _setViewPort(paramObj) {
+            var viewPort = paramObj.viewport;
+            if (viewPort != null && viewPort != '') Mojo.setViewport(viewPort);
+        }
+    
+     function _loadData() {
+            try {
+                Mojo.loadData({
+                    success : function () {
+                        // Start the application running
+                        // We're going to start the demo with an HTML page instead of a flow
+                        // The MENU will launch into other pages or flows
+                        Mojo.getSome("main");
+                    },
+                    error : function () {
+                        TRACE("ERROR LOADING DATA");
+                        Mojo.getSome("main");
+                    }
+                });
+
+            }
+            catch (ex) {
+                if (ex instanceof MojoException)
+                    alert("Application Error: Component=" + ex.component + " Msg=" + ex.msg);
+                else
+                    alert("UNKNOWN EXCEPTION: " + ex.type + " " + ex.message);
+            }
+
+        }
+</script>
+    </head>
+<body>
+<div id="main_navbar" class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" data-loadflow="main~start" data-loadflow-options="{viewport: 'content'}">LOGO</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav nav-tabs">
+              <li><a data-loadflow="main~aboutlaw" data-loadflow-options="{viewport: 'content'}">About the Law</a></li>
+              <li><a data-loadflow="main~goToQs" data-loadflow-options="{viewport: 'content'}">Questions</a></li>
+              <li><a href="#">Testimonials</a></li>
+              <li><a href="#">View Providers</a></li>
+             <!--  <li><button class="btn" data-loadflow="main~getName"
+                        data-loadflow-options="{viewport: 'content'}">Estimate Coverage</button></li> -->
+            </ul>
+           
+            <form class="navbar-form pull-right">
+             
+             </form>
+         <!-- <li class="dropdown"> <input class="span2" type="text" placeholder="Email">
+<input class="span2" type="password" placeholder="Password">
+<button type="submit" class="btn">Sign in</button>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+<ul class="dropdown-menu">
+<li><a href="#">Action</a></li>
+<li><a href="#">Another action</a></li>
+<li><a href="#">Something else here</a></li>
+<li class="divider"></li>
+<li class="nav-header">Nav header</li>
+<li><a href="#">Separated link</a></li>
+<li><a href="#">One more separated link</a></li>
+</ul>
+</li>
+</div>
+<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+<p><a class="btn" href="#">View details &raquo;</a></p><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="content" class="container-fluid"></div>
+    <hr>
+    <footer>
+       <div class="pull-left">
+       <p style="margin-left: 15px;">Connect With Us<br/>
+Facebook<br/>
+Twitter</p></div>
+
+<div class="pull-right">
+         <p style="margin-right: 15px;">&copy; Somethinglegit 2013
+         <br/>All Rights Reserved.<br/>
+All third-party products belong to their respective companies.
+        </div>
+      </footer>
+      <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
+</body>
+</html>

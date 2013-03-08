@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- Extremely modest title -->
+        <title></title>
+        <script>
+        	var VIEW_SCOPE={
+        		onStart : function(){
+        			Mojo.setDataVal('myModel.age', "");
+        			Mojo.setDataVal('myModel.spouseAge', "");
+        			var isMarried = Mojo.getDataVal("myModel.MaritalStatus");
+        			if(isMarried == "single")
+        			{
+        				jQuery("#spouseAgeDiv").hide();
+        			}else if(isMarried == "married")
+        			{
+        				jQuery("#spouseAgeDiv").show();
+        			}
+        		}
+        		
+        	
+        	}
+        	
+        </script>
+        
+    </head>
+    <body>
+      <div class="question-unit">
+      	<h3>What's your age?</h3>
+      	 <!--<input data-bind="myModel.dependents"  data-validate="numberOnly"/>
+      	 	 onchange="VIEW_SCOPE.onslidechange();">-->
+     
+      	 <input id="ageRange" type="text" data-validate="numberOnly" data-bind="myModel.age">
+      	
+      	 <div id="spouseAgeDiv" style="display: none;">
+      	 	<h3>What's your spouse's age?</h3>
+      	 	 <input id="spouseAgeRange" type="text" data-validate="numberOnly" data-bind="myModel.spouseAge">
+      	 </div>
+       <br/>
+       	<div class="pull-bottom">
+       		<a class="btn pull-left" data-nav="back">Back</a>
+       		<a class="btn pull-right" data-nav="next">Continue</a>
+       </div>
+		</div>
+    </body>
+</html>

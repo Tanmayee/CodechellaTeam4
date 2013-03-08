@@ -1,0 +1,277 @@
+/* Validation Engine */
+div.errorTooltip {
+    position:absolute;
+    padding:8px;
+    color:#fff;
+    line-height:17px;
+    font-size:13px;
+    letter-spacing:.2px;
+    border-radius:5px;
+    border:1px solid #111111;
+    box-shadow:0 1px 3px #333333;
+    cursor: pointer;
+    font-family: Helvetica, Arial, san-serif;
+    z-index:5;
+    background: -moz-linear-gradient(top, #545454 0%, #232323 100%);
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#545454), color-stop(100%,#232323));
+    background:-webkit-linear-gradient(top, #545454 0%,#232323 100%);
+    background: -o-linear-gradient(top, #545454 0%,#232323 100%);
+    background: -ms-linear-gradient(top, #545454 0%,#232323 100%);
+    background: linear-gradient(top, #545454 0%,#232323 100%);
+    z-index:101;
+}
+
+div.errorTooltipArrowDown {
+    position:absolute;
+    bottom:-9px;
+    left:20px;
+    width:0;
+    height:0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 9px solid #111111;
+    background-image: none;
+}
+
+div.errorTooltipArrowUp {
+    position:absolute;
+    bottom:33px;
+    left:20px;
+    width:0;
+    height:0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 9px solid #111111;
+    background-image: none;
+}
+
+div.errorTooltipArrowLeft {
+    position:absolute;
+    bottom:13px;
+    left:-9px;
+    width:0;
+    height:0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 9px solid #111111;
+    background-image: none;
+}
+
+
+/* Modal Styles */
+#modalWrapper {
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	z-index: 101;
+}
+
+#modalContainer {
+    display:none;
+    background-color: #FFFFFF;
+    position:relative;
+    top: 0;
+    left: -50%;
+    padding:20px;
+    width: 900px;
+    min-height:300px;
+    z-index: 101;
+    border-radius:8px;
+    border:1px solid #000;
+    box-shadow:0 0 10px #000;
+}
+
+#modalInnerContainer {
+    width:100%;
+}
+
+#modalClose {
+    background-image:url(img/close_btn_off.png);
+    cursor: pointer;
+    height: 38px;
+    position: absolute;
+    right: -18px;
+    top: -20px;
+    width: 38px;
+}
+#modalClose:hover {
+    background-image:url(img/close_btn_on.png);
+}
+#modalBgContainer {
+    display:none;
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height:100%;
+    background-color:#111;
+    opacity:.7;
+    z-index:100;
+}
+
+div.mojoTransitioner {
+    position: absolute;
+    display: none;
+    left: 748px;
+    top: 250px;
+    display: none;
+    padding: 20px 10px;
+    border-radius: 10px;
+    min-width: 300px;
+    background-color: rgba(111,111,111, .8);
+    color: #fff;
+    box-shadow: 0px 0px 20px #000;
+    background-image: url(img/transition_spinner.gif);
+    background-repeat: no-repeat;
+    padding-left: 55px;
+    background-position: left center;
+    background-position-x: 10px;
+    font-size: 1.2em;
+}
+
+/* Debug Console */
+#debug_console_wrapper {
+	position:fixed;
+    font-family: Helvetica, Arial, san-serif;
+    top:auto;
+	border-color:#111;
+	border-style:solid;
+	border-width:1px 0 0;
+	bottom:0;
+	height:0;
+	padding:0 10px;
+	width:100%;
+	z-index:600;
+	background-color:#222;
+    background-image: url(img/chalkboard.jpeg);
+    background-repeat: repeat;
+	box-shadow:0 -1px 5px #333;
+}
+#debug_console_wrapper pre {
+    font-family: "Courier New", Helvetica, Arial, san-serif;
+    font-size: .9em;
+}
+
+#debug_console_toggle_button {
+	background-color:#222;
+	border-width:1px 1px 0 1px;
+	border-style:solid;
+	border-color:#111;
+	border-radius:7px 7px 0 0;
+	color:#fff;
+	cursor:pointer;
+	font-size:13px;
+	font-weight:normal;
+	padding:3px 6px;
+	position:absolute;
+	right:30px;
+	top:-25px;
+}
+
+#debug_menu_bar {
+	color:#666;
+	padding:5px 0;
+    cursor: s-resize;
+}
+
+#debug_console_viewport {
+	float:left;
+	display:inline-block;
+	color:#fff;
+	font-size:1em;
+	height:290px;
+	margin:0;
+	overflow-x:hidden;
+	overflow-y:auto;
+	text-align:left;
+	top:30px;
+	width:70%;
+	line-height:16px;
+	margin-bottom:5px;
+}
+
+#debug_help {
+	float:right;
+	width:29%;
+	white-space:normal;
+}
+
+#debug_help_inner_container {
+	padding:0 15px;
+	color:#fff;
+}
+
+#debug_console_component_list {
+	border-color:#222;
+	border-style:solid;
+	border-width:1px 1px 0;
+	width:90%;
+	max-height:230px;
+	overflow:auto;
+	background-color:#444;
+	opacity:.8;
+	margin-top:5px;
+    width:auto;
+    height:auto;
+}
+
+#debug_console_tools {
+	font-size:.9em; 
+	line-height:18px; 
+	bottom:5px; 
+	left:4px;
+	padding-right:15px;
+    float: right;
+}
+
+#debug_console_input {
+	float:left;
+	outline:none;
+	padding:0 5px;
+	min-width:60%;
+	border:0;
+	color:#fff;
+	background:none;
+	box-shadow:none;
+}
+
+.debug_console_menu_toggle_button_off {
+	color:#666;
+	display:inline-block;
+	padding:4px 8px;
+	border-radius:9px;
+	background-color:#000;
+	cursor:pointer;
+	margin:5px 12px 5px 0; 
+	font:bold 13px Arial,sans-serif;	
+}
+
+.debug_console_menu_toggle_button_on {
+	color:#fff;
+	display:inline-block;
+	padding:4px 8px;
+	border-radius:9px;
+	background-color:#000;
+	cursor: default;
+	margin:5px 12px 5px 0; 
+	font:bold 13px Arial,sans-serif;
+}
+
+.debug_console_button {
+	background-color:#444;
+	border-radius:5px;
+	box-shadow:0 1px 3px #000;
+	color:#fff;
+	cursor:pointer;
+	font-size:12px;
+	font-weight:bold;
+	margin:0 2px 0 0;
+	padding:3px 8px;
+	text-shadow:-1px -1px 0 #000;
+}
+
+.debug_clear {
+	clear:both;
+	width:0;
+	height:0;
+}

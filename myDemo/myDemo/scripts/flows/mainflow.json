@@ -1,0 +1,54 @@
+{
+    "metaData" : {
+        "version" : "v0.0.0"
+    },
+
+    "startState" : "page1",
+
+    "action_choosePage" : {
+        "state_type" : "ACTION",
+        "exp" : "$[MyDemo.selectedPage]",
+        "transitions" : {
+            "page1" : "page1",
+            "page2" : "page2",
+            "page3" : "page3"
+        }
+    },
+
+    "action_calculateValues" : {
+        "state_type" : "ACTION",
+        "exp" : "$[MyDemo.selectedPage]",
+        "transitions" : {
+            "*" : "page3"
+        }
+    },
+
+    "page1" : {
+        "state_type" : "VIEW",
+        "ref" : "pg1",
+        "transitions" : {
+            "next" : "action_choosePage"
+        }
+    },
+
+    "page2" : {
+        "state_type" : "VIEW",
+        "ref" : "pg2",
+        "transitions" : {
+            "next" : "action_calculateValues"
+        }
+    },
+
+    "page3" : {
+        "state_type" : "VIEW",
+        "ref" : "pg3",
+        "transitions" : {
+            "next" : "endDemo"
+        }
+    },
+
+    "endDemo" : {
+        "state_type" : "END",
+        "outcome" : "doneWithDemo"
+    }
+}

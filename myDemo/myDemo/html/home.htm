@@ -1,0 +1,145 @@
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- Extremely modest title -->
+        <title></title>
+        <style type="text/css">
+        	.findButton{
+        		display:block;margin-left: auto;margin-right: auto;margin-bottom:15px;width:200px;font-size:20px;
+        	}
+        </style>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/mojo.css" rel="stylesheet">
+        <script>
+        	var images = new Array()
+			images[0] = "./img/masthead-family.jpg";
+			images[1] = "./img/masthead-mom.jpg";
+			images[2] = "./img/masthead-guy.jpg";
+			setTimeout("changeImage()", 5000);
+			var x=0;			
+ 	
+        	function changeImage(){
+        		jQuery('#myGallery').css("background-image", "url('"+ images[x] +"')"); 
+				x++;
+				if(x >= 3){
+        			x = 0;
+    			} 
+    			setTimeout("changeImage()", 5000);
+        	}
+        </script>
+ 
+    </head>
+    <body>
+    
+    <div id="myCarousel" class="carousel slide span11" >
+	  <ol class="carousel-indicators">
+	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	    <li data-target="#myCarousel" data-slide-to="1"></li>
+	    <li data-target="#myCarousel" data-slide-to="2"></li>
+	  </ol>
+	  <!-- Carousel items -->
+	  <div class="carousel-inner">
+	    <div class="active item">
+	    <img src="img/happy_couple.jpeg" alt="">
+	    <div class="carousel-caption">
+	    <p>New, affordable insurance options available for people without insurance.</p>
+	    </div></div>
+	    <div class="item">
+	    <img src="img/happy-family.jpeg" width="100%" alt="">
+	    <div class="carousel-caption">
+	    <p>All insurance plans will have to cover doctor visits, hospi­talizations, maternity care, emergency room care, and pre­scriptions.</p>
+	    </div></div>
+	    <div class="item">
+	    <img src="img/happy_couple.jpeg" width="100%" alt="">
+	    <div class="carousel-caption">
+	    <p>Financial help is available so you can find a plan that fits your budget</p>
+	    </div></div>
+	     <div class="item">
+	    <img src="img/happy-family.jpeg" width="100%" alt="">
+	    <div class="carousel-caption">
+	    <p>All insurance plans will have to show the costs and what is covered in simple language with no fine print.</p>
+	    </div></div>
+	  </div>
+	  <!-- Carousel nav -->
+	  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+	  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	</div>
+	<br/>
+      <!-- Main hero unit for a primary marketing message or call to action -->
+     <div class="row-fluid span11"> 
+        <div >
+          <h4>One year from now,12 million Americans are expected to begin purchasing <br/>
+          	health insurance through newly-created marketplaces known as exchanges.</h4>
+          	<h4>How will the Affordable Healthcare Act affect me?</h4>
+         
+          	<p>Federal subsidies will entice many would-be participants to the program
+          		 that will offer coverage starting in 2014.<br/>
+          		 Through some simple questions, we will find out if you qualify for the
+government subsidies and what impact it will have on your life.</p>
+          <!-- 	 <ul>
+          		 <li>New, affordable insurance options available for people without insurance.</li>
+          		 <li>All insurance plans will have to cover doctor visits, hospi­talizations, maternity care, emergency room care, and pre­scriptions.</li>
+          		 <li>Financial help is available so you can find a plan that fits your budget.</li>
+          		 <li>All insurance plans will have to show the costs and what is covered in simple language with no fine print.</li>
+          		 </ul>      -->	 
+        </div>
+      </div>
+      <div class="row-fluid span11">
+      	<h3>What do I do now?</h3>
+      	<div class="span3" align="center">
+      	<img src="img/masthead_new.jpeg" class="img-polaroid">
+      		<h5>I'm looking for affordable options for myself</h5>
+      		<a data-nav="find" class="btn btn-primary">See my options</a>
+      	</div>
+      	<div class="span3" align="center">
+      	<img src="img/masthead-family.jpeg" class="img-polaroid">
+      		<h5>Options for someone I care about</h5>
+      		<a data-nav="find" class="btn btn-primary">See my options</a>
+      	</div>
+      	<div class="span3" align="center">
+      	<img src="img/single_donate.jpeg" class="img-polaroid">
+      		<h5>I want to help others afford insurance</h5>
+      		<a data-nav="find" class="btn btn-primary">See my options</a>
+      	</div>
+      </div>
+     <!-- <div class="hero-unit" id="myGallery">
+         <p style="color:white; font-size: 30px">"I have heard a lot about Obamacare <br/>
+        and I am worried about how this is <br/>going to affect the people I care about."</p>
+      </div>
+      <!-- Example row of columns--> 
+      <div class="row-fluid span11">
+      <h3>See what others are saying</h3>
+        <div class="span4">
+          <p>"I liked being able to click on possible deduction
+and going through the steps to see if I was eligible for that
+deduction...I will gladly continue to use TurboTax."</p>
+<p class="small">Jennifer Duke <br/>
+Boston,MA</p>
+        </div>
+   		 <div class="span4">
+          <p>"I liked being able to click on a possible deduction and
+going through the steps to see if I was eligible for that 
+deduction...I will galdly continue to use Turbotax."</p>
+<p class="small">Joe Smith <br/>
+Rochester,NY </p>
+        </div>
+      </div>
+     
+        <!--   <button class="btn" style="display:block;margin-left: auto;
+          margin-right: auto;margin-bottom:15px;width:200px;font-size:20px;"
+          data-nav="find"> </button>
+  
+	<a class="btn btn-primary btn-large" style="display:block;margin-left: auto;
+          margin-right: auto;margin-bottom:15px;width:200px;font-size:20px;">
+Find out Now!
+</a>-->
+			
+    
+
+    </body>
+</html>
+ 
+ 
+ 

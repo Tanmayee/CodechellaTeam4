@@ -1,0 +1,168 @@
+
+{
+   "model" : {
+        "name" : "FlowTestModel"
+    },
+    
+   "startState":"start",
+   "start":{
+       "state_type":"VIEW",
+       "ref":"home",
+       "transitions":{
+           "find":"getName",
+           "aboutLaw" : "aboutlaw",
+           "questions":"goToQs"
+       }
+   },
+   
+   "goToQs":{
+    "state_type":"VIEW",
+       "ref":"questions",
+       "transitions":{
+           "back": "start"         
+       }
+  },
+   
+     "aboutlaw":{
+       "state_type":"VIEW",
+       "ref":"aboutTheLaw",
+       "transitions":{
+           "back": "start"         
+       }
+   },
+   
+     "getName":{
+       "state_type":"VIEW",
+       "ref":"name",
+       "transitions":{
+           "next":"stateFlow"
+       }
+   },
+   
+   "stateFlow":{
+    "state_type":"ACTION",
+    "exp" : "$[myModel.fromCali] eq 'yes'",
+        "transitions" : {
+            "true" : "overView",
+            "false" : "failPage"
+        }
+   },
+   
+    "failPage" : {
+        "state_type" : "VIEW",
+        "ref" : "Fail",
+        "transitions" : {
+            "back" : "start"
+        }
+    },
+   
+   "overView":{
+       "state_type":"VIEW",
+       "ref":"flowOverview",
+       "transitions":{
+           "back":"getName",
+           "next":"married",
+           "sign_up":"signup"
+       }
+   },
+   
+   "signup":{
+       "state_type":"VIEW",
+              "ref":"signup",
+   "transitions":{
+           "next":"married",
+           "back":"getName",
+           "goToLogin":"goToLogin"
+       }
+   },
+   
+    "married":{
+       "state_type":"VIEW",
+       "ref":"maritalStatus",
+       "transitions":{
+           "back":"overView",
+           "next":"getDependents"
+       }
+   },
+   
+    "getDependents":{
+       "state_type":"VIEW",
+       "ref":"dependents",
+       "transitions":{
+           "back":"married",
+           "next":"employment"
+       }
+   },
+   
+    "employment":{
+       "state_type":"VIEW",
+       "ref":"employed",
+       "exp" : "$[myModel.hasCoverage] eq 'yes'",
+        "transitions" : {
+            "true" : "premium",
+            "next" : "premium",
+            "false" : "failPage",
+            "back":"getDependents"
+        }
+   },
+   
+   "premium":{
+       "state_type":"VIEW",
+       "ref":"expectedPremium",
+       "transitions":{
+           "back":"employment",
+           "next":"getIncome"
+       }
+   },
+   
+    "getIncome":{
+       "state_type":"VIEW",
+       "ref":"income",
+       "transitions":{
+           "back":"premium",
+           "next":"showResults"
+       }
+   },
+  
+  
+   "showResults":{
+       "state_type":"VIEW",
+       "ref":"results",
+       "transitions":{
+           "back":"getIncome",
+           "next":"getOptions"
+       }
+   },
+     "getOptions":{
+       "state_type":"VIEW",
+       "ref":"myOptions",
+       "transitions":{
+           "back":"showResults",
+           "next":"end_done"
+       }
+   },
+  
+   "end_done":{
+       "state_type":"endDemo",
+       "outcome":"doneWithDemo"
+   },
+   
+      "goToLogin":{
+       "state_type":"VIEW",
+       "ref":"login",
+   "transitions":{
+           "next":"married",
+           "back":"getName",
+           "forgotPwd":"forgotPwd"
+       }
+   },
+   
+      "forgotPwd":{
+       "state_type":"VIEW",
+       "ref":"login",
+   "transitions":{
+           "next":"login",
+           "back":"getName"
+       }
+   }
+}

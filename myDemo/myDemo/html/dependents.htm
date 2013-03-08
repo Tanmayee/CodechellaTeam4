@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- Extremely modest title -->
+        <title></title>
+        <script>
+        	var VIEW_SCOPE={
+        		onStart : function(){
+        			Mojo.setDataVal('myModel.dependents', 0);
+        			
+        			var isMarried = Mojo.getDataVal("myModel.MaritalStatus");
+        			if(isMarried == "married")
+        			{
+        				var d = jQuery("#selfDiv");
+        				d.append("<div class='single-figure' style='display:inline-block'></div>")
+        			}
+        		},
+        		onslidechange: function(){
+        			//alert("myModel.dependents");
+        			var deps = jQuery("#noDeps").val();
+        			//alert(deps);
+        			if (deps >= 0)
+        			{
+        				Mojo.setDataVal('myModel.dependents', deps);
+        				var d = jQuery("#dependentsDiv");
+        				d.empty();
+        			//jQuery("#noOfDeps").text = Mojo.getDataVal("myModel.dependents");
+        				for(var i=0;i < deps ; i++)
+        				{
+        					d.append("<div class='single-figure' style='display:inline-block'></div>")
+        				}
+        			}
+        		}
+        	}
+        	
+        </script>
+        
+    </head>
+    <body>
+      <div class="question-unit">
+      	<h3>How many other people are in your household?</h3>
+      	 <!--<input data-bind="myModel.dependents"  data-validate="numberOnly"/>-->
+      	 <div style="display:block">
+      	 <div id="selfDiv" style="display: inline-block">
+      	 	<div class="single-figure" style="display:inline-block"></div>     		
+      	 </div>
+      	 <div id="dependentsDiv" style="display: inline-block"></div>
+      	 </div>
+      	 <div style="text-align: center">
+      	 <input id="noDeps" type="range" name="dep" min="0" max="10" step="1" value="0" 
+      	 onchange="VIEW_SCOPE.onslidechange();">
+      	 <label id="noOfDeps">${myModel.dependents}</label></div>
+       <br/>
+       	<div class="pull-bottom">
+       		<a class="btn pull-left" data-nav="back">Back</a>
+       		<a class="btn pull-right" data-nav="next">Continue</a>
+       </div>
+		</div>
+    </body>
+</html>

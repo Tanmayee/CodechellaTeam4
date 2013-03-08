@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- Extremely modest title -->
+        <title></title>
+        <script>
+        	var VIEW_SCOPE={
+        		onStart : function(){
+        			Mojo.setDataVal('myModel.age', "");
+        			Mojo.setDataVal('myModel.spouseAge', "");
+        		},
+        		
+        		onStatusChange : function(){
+        			var isMarried = Mojo.getDataVal("myModel.MaritalStatus");
+        			if(isMarried == "single")
+        			{
+        				jQuery("#spouseAgeDiv").hide();
+        			}else if(isMarried == "married")
+        			{
+        				jQuery("#spouseAgeDiv").show();
+        			}
+        		}
+        	}
+        	
+        </script>
+    </head>
+    <body>
+      <div class="question-unit" align="center">
+      	<div style="display:inline">
+	      	<h3>Are you married ${myModel.name}?</h3>
+	      	
+	      	<div style="display:inline-block">
+	      		<div class="single-figure" style="display:inline-block"></div><br>
+	           	<input type="radio" id="rbtnSingle"  name="rbtnMarried" value="single"
+	            	 data-bind="myModel.MaritalStatus" data-bind-options="defaultValue : 'single'"/>
+	            	 <label>Single</label>
+	        </div>
+	        <div style="display: inline-block;margin-left: 25px">
+	        	<div>
+	        		<div class="single-figure" style="display:inline-block"></div>
+	        		<div class="single-figure" style="display:inline-block"></div>
+	         	</div>
+	            	<input type="radio" id="rbtnMarried"  name="rbtnMarried" value="married" 
+	            	data-bind="myModel.MaritalStatus" data-bind-options="{bindFunction:'VIEW_SCOPE.onStatusChange'}"/><label>Married</label>
+	        </div>
+		</div>
+		<br/>
+		<div>
+			<div style="display:inline-block">
+			<h4>What's your age?</h4>
+	        <input id="ageRange" type="text" data-validate="numberOnly" data-bind="myModel.age">
+	        </div>
+	        <div id="spouseAgeDiv" style="display: none;">
+      	 	<h4>What's your spouse's age?</h4>
+      	 	<input id="spouseAgeRange" type="text" data-validate="numberOnly" data-bind="myModel.spouseAge">
+      	 </div>
+		</div>
+       <br>
+		 	<div class="pull-bottom">
+       		<a class="btn pull-left" data-nav="back">Back</a>
+       		<a class="btn pull-right" data-nav="next">Continue</a>
+       </div>
+       </div>
+    </body>
+</html>

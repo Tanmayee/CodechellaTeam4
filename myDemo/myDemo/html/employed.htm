@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- Extremely modest title -->
+        <title></title>
+       	<script>
+       		var VIEW_SCOPE= {
+       			onStart : function(){
+       				Mojo.setDataVal("myModel.Employed","yes")
+       			}
+       		}
+       	</script>
+    </head>
+    <body>
+      <div class="question-unit" align="center">
+      	<h3>Are you employed?</h3>
+      	<div style="display: block">
+            <div style="display:inline-block">
+            	<div class="employed"></div><br/>
+            	<input type="radio" id="rbtnemployed"  name="rbtnMarried" value="yes"
+            	 data-bind="myModel.Employed" data-bind-options="defaultValue : 'yes'"/>
+            	 Yes</div>
+             <div style="display:inline-block;margin-left: 15px">
+             	<div class="unemployed"></div><br/>
+            	<input type="radio" id="rbtnunemployed"  name="rbtnMarried" value="no" 
+            	data-bind="myModel.Employed"/>No
+            	</div>
+        </div>
+        <br/>
+        <div>
+        	<h3>Do you have Employee Coverage available?</h3>
+	      		<div style="display: block">
+            		<div style="display:inline-block">
+            			<input type="radio" id="rbtnCali"  name="rbtnCali" value="yes"
+	            	 		data-bind="myModel.hasCoverage"/>Yes!</div>
+	            	<div style="display:inline-block;margin-left: 15px">
+	            		<input type="radio" id="rbtnNoCali"  name="rbtnCali" value="no"
+	            	 data-bind="myModel.hasCoverage"/>
+	            	 Naah..</div></div>
+        </div>
+       <br/>
+    	<div class="pull-bottom">
+       		<a class="btn pull-left" data-nav="back">Back</a>
+       		<a class="btn pull-right" data-nav="next">Continue</a>
+       </div>
+		</div>
+    </body>
+</html>

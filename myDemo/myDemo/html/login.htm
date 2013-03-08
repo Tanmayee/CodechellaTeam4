@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="UTF-8" />
+<!-- Extremely modest title -->
+<title>Log In</title>
+
+</head>
+<body>
+	<div class="question-unit" align="center">
+		<h3>Welcome back!</h3>
+		<a data-nav="forgotPwd">I forgot my password</a>
+		<div>
+			<table>
+				<tr>
+					<td><input type="email" data-bind="myModel.email"
+						value="Email" placeholder="Email..."/></td>
+					<td><input data-bind="myModel.password" type="password"
+						value="Password" placeholder="Password..."/></td>
+				</tr>
+			</table>
+		</div>
+
+		<br />
+		<div class="pull-bottom">
+			<a class="btn pull-left" data-nav="back">Back</a> <a
+				class="btn pull-right" data-nav="next">Next</a>
+		</div>
+	</div>
+</body>
+</html>
